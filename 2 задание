@@ -1,0 +1,5 @@
+def count_unique_chars(s):
+    return len(set(s))  # Преобразуем строку в множество и возвращаем его размер
+
+# Пример использования
+print(count_unique_chars("hello"))  # Должен вернуть 4
