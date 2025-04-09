@@ -1,0 +1,5 @@
+def find_min_max(arr):
+    return (min(arr), max(arr))  # Используем встроенные функции min и max
+
+# Пример использования
+print(find_min_max([1, 5, 8, 3, 10]))  # Должен вернуть (1, 10)
