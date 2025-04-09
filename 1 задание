@@ -1,0 +1,51 @@
+class Stack:
+    def __init__(self, size=10):
+        self.size = size
+        self.stack = [None] * size  # Инициализируем массив фиксированного размера
+        self.top_index = -1  # Индекс верхнего элемента стека
+
+    def push(self, value):
+        if self.top_index >= self.size - 1:
+            print("Ошибка: стек переполнен")
+        else:
+            self.top_index += 1
+            self.stack[self.top_index] = value
+            print(f"Элемент {value} добавлен в стек")
+
+    def pop(self):
+        if self.is_empty():
+            print("Ошибка: стек пуст")
+            return None
+        else:
+            value = self.stack[self.top_index]
+            self.top_index -= 1
+            print(f"Элемент {value} удален из стека")
+            return value
+
+    def top(self):
+        if self.is_empty():
+            print("Ошибка: стек пуст")
+            return None
+        else:
+            return self.stack[self.top_index]
+
+    def is_empty(self):
+        return self.top_index == -1
+
+# Пример использования стека
+if __name__ == "__main__":
+    stack = Stack()
+
+    stack.push(10)
+    stack.push(20)
+    stack.push(30)
+
+    print(f"Вершина стека: {stack.top()}")  # Ожидается 30
+
+    stack.pop()
+    print(f"Вершина стека после pop: {stack.top()}")  # Ожидается 20
+
+    while not stack.is_empty():
+        stack.pop()
+
+    stack.pop()  # Ожидается ошибка "стек пуст"
