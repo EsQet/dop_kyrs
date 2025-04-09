@@ -1,51 +1,32 @@
 class Stack:
-    def __init__(self, size=10):
-        self.size = size
-        self.stack = [None] * size  # Инициализируем массив фиксированного размера
-        self.top_index = -1  # Индекс верхнего элемента стека
+    def __init__(self):
+        self.stack = []  # Используем список для стека
 
     def push(self, value):
-        if self.top_index >= self.size - 1:
-            print("Ошибка: стек переполнен")
+        if len(self.stack) >= 10:  # Проверка на переполнение
+            print("Ошибка: Стек переполнен.")
         else:
-            self.top_index += 1
-            self.stack[self.top_index] = value
-            print(f"Элемент {value} добавлен в стек")
+            self.stack.append(value)  # Добавляем элемент на вершину стека
 
     def pop(self):
-        if self.is_empty():
-            print("Ошибка: стек пуст")
+        if not self.stack:  # Проверка на пустоту
+            print("Ошибка: Стек пуст.")
             return None
-        else:
-            value = self.stack[self.top_index]
-            self.top_index -= 1
-            print(f"Элемент {value} удален из стека")
-            return value
+        return self.stack.pop()  # Удаляем и возвращаем верхний элемент
 
     def top(self):
-        if self.is_empty():
-            print("Ошибка: стек пуст")
+        if not self.stack:  # Проверка на пустоту
+            print("Ошибка: Стек пуст.")
             return None
-        else:
-            return self.stack[self.top_index]
+        return self.stack[-1]  # Возвращаем верхний элемент без удаления
 
     def is_empty(self):
-        return self.top_index == -1
+        return len(self.stack) == 0  # Проверка, пуст ли стек
 
 # Пример использования стека
-if __name__ == "__main__":
-    stack = Stack()
-
-    stack.push(10)
-    stack.push(20)
-    stack.push(30)
-
-    print(f"Вершина стека: {stack.top()}")  # Ожидается 30
-
-    stack.pop()
-    print(f"Вершина стека после pop: {stack.top()}")  # Ожидается 20
-
-    while not stack.is_empty():
-        stack.pop()
-
-    stack.pop()  # Ожидается ошибка "стек пуст"
+stack = Stack()
+stack.push(10)
+stack.push(20)
+print(stack.top())  # Должен вернуть 20
+print(stack.pop())  # Должен вернуть 20
+print(stack.is_empty())  # Должен вернуть False
