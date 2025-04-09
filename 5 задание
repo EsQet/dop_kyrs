@@ -1,0 +1,18 @@
+def convert_to_12_hour_format(hours, minutes):
+    # Определяем AM или PM
+    if hours >= 12:
+        period = "PM"
+    else:
+        period = "AM"
+
+    # Приводим часы к 12-часовому формату
+    if hours == 0:
+        hours = 12
+    elif hours > 12:
+        hours -= 12
+
+    return f"{hours}:{minutes:02d} {period}"  # Форматируем минуты до двух цифр
+
+# Примеры использования
+print(convert_to_12_hour_format(14, 30))  # Должен вывести "2:30 PM"
+print(convert_to_12_hour_format(0, 45))   # Должен вывести "12:45 AM"
